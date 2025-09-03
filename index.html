@@ -104,7 +104,40 @@
       font-size: 0.9rem;
       border-top: 2px solid #222;
     }
+
+    /* Beta message style */
+    .beta-message {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: #0ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 2rem;
+      padding: 2rem;
+    }
   </style>
+  <script>
+    const allowedIP = "67.188.143.217"; // Replace with your IP
+
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        if (data.ip !== allowedIP) {
+          document.body.innerHTML = `
+            <div class="beta-message">
+              <h1>Sorry 🚫</h1>
+              <p>Site is in beta testing</p>
+            </div>
+          `;
+        }
+      })
+      .catch(err => {
+        console.error("IP check failed", err);
+      });
+  </script>
 </head>
 <body>
   <header>
@@ -120,7 +153,6 @@
     <p>Play your favorite games anytime, anywhere</p>
     <a href="games" class="btn">Start Playing</a>
   </section>
-
 
   <footer>
     <p>© 2025 ubg924 | Stay sneaky 😉</p>
