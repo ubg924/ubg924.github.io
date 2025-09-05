@@ -2,54 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Google Drive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Google Drive</title>
   <link rel="icon" href="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
-    .about-section {
-      max-width: 800px;
-      margin: 4rem auto;
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+    }
+
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #222;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: #0ff;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #0ff;
+    }
+
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 2rem;
-      background: #111;
-      border-radius: 16px;
-      box-shadow: 0 0 20px #00ffff33;
     }
-
-    .about-section h1 {
-      font-size: 2.5rem;
-      color: #00ffff;
+    .hero h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      color: #0ff;
       margin-bottom: 1rem;
     }
-
-    .about-section p {
-      font-size: 1.1rem;
-      color: #ccc;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
     }
-
-    .about-section .highlight {
-      color: #00ffff;
+    .hero .btn {
+      padding: 1rem 2rem;
+      background: #0ff;
+      color: #000;
+      border: none;
+      font-size: 1rem;
       font-weight: bold;
-    }
-
-    .about-section a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
       transition: 0.3s;
+      text-decoration: none;
+    }
+    .hero .btn:hover {
+      background: #00cccc;
     }
 
-    .about-section a:hover {
-      text-shadow: 0 0 10px #00ffff;
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem auto;
+      flex-wrap: wrap;
+    }
+    .quick-links a {
+      background: #1a1a1a;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .quick-links a:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      border-top: 2px solid #222;
+    }
+
+    /* Beta message style */
+    .beta-message {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      color: #0ff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 2rem;
+      padding: 2rem;
     }
   </style>
+  <script>
+  fetch("https://api.ipify.org?format=json")
+    .then(res => res.json())
+    .then(data => {
+      console.log("User IP:", data.ip);
+
+      // keep your beta block logic
+      const allowedIP = "67.188.141.249"; // change this to your IP
+      if (data.ip !== allowedIP) {
+        document.body.innerHTML = `
+          <h1 style="font-family: 'Roboto', sans-serif; 
+                     font-size: 2rem; 
+                     color: cyan; 
+                     text-align: center; 
+                     margin-top: 20%;">
+            Sorry, site is in beta testing
+          </h1>`;
+      }
+    })
+    .catch(err => console.error("IP fetch failed:", err));
+</script>
+
+
 </head>
 <body>
-
-  <!-- Navbar -->
   <header class="nav">
     <div class="logo">
       <h1 style="color:#00ffff; font-family:'Orbitron', sans-serif;">Unblocked Games</h1>
@@ -61,8 +155,7 @@
     </nav>
   </header>
 
-  <!-- About Section -->
-  <section class="about-section">
+  <section class="hero">
     <h1>About Us 🎮</h1>
     <p>
       Welcome to <span class="highlight">Unblocked Games</span> — your hub for fun, 
@@ -84,10 +177,8 @@
     </p>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <p>© 2025 ubg924 | Stay sneaky 😉</p>
   </footer>
-
 </body>
 </html>
