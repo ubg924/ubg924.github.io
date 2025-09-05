@@ -159,7 +159,24 @@
     <h2>Welcome to Unblocked Games 🎮</h2>
     <p>Play your favorite games anytime, anywhere</p>
     <a href="games" class="btn">Start Playing</a>
+    <button id="openBlank" class="btn">Open in about:blank</button>
   </section>
+
+<script>
+  document.getElementById("openBlank").addEventListener("click", () => {
+    const win = window.open("about:blank", "_blank");
+    const iframe = win.document.createElement("iframe");
+
+    // make it full size
+    iframe.style.width = "100%";
+    iframe.style.height = "100%";
+    iframe.style.border = "none";
+    iframe.src = window.location.href; // loads your current site inside
+
+    win.document.body.style.margin = "0";
+    win.document.body.appendChild(iframe);
+  });
+</script>
 
   <footer>
     <p>© 2025 ubg924 | Stay sneaky 😉</p>
