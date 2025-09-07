@@ -158,6 +158,7 @@
   <section class="hero">
     <h2>Welcome to Unblocked Games 🎮</h2>
     <p>Play your favorite games anytime, anywhere</p>
+    <div>Visitors: <span id="visitor-counter">...</span></div>
     <a href="games" class="btn">Start Playing</a>
     <br>
     <button id="openBlank" class="btn">Open in about:blank</button>
@@ -177,6 +178,12 @@
     win.document.body.style.margin = "0";
     win.document.body.appendChild(iframe);
   });
+  
+  fetch("https://viewcounter.ethantytang11.workers.dev")
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById("visitor-counter").innerText = data.uniqueVisitors;
+    });
 </script>
 
   <footer>
