@@ -182,11 +182,6 @@
     win.document.body.appendChild(iframe);
   });
   
-  fetch("https://viewcounter.ethantytang11.workers.dev")
-    .then(r => r.json())
-    .then(data => {
-      document.getElementById("visitor-counter").innerText = data.uniqueVisitors;
-    });
 </script>
 
   <footer>
